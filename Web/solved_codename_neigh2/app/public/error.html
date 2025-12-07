@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR - Temporal Anomaly Detected</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a1a2e;
+            background-image: radial-gradient(circle, #2a2a4e 1px, transparent 1px),
+                              radial-gradient(circle, #2a2a4e 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #e0e0e0;
+        }
+
+        .error-container {
+            background-color: rgba(22, 12, 12, 0.85);
+            padding: 40px 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(180, 70, 70, 0.3),
+                        0 0 5px rgba(255, 255, 255, 0.1) inset;
+            border: 1px solid #b44646;
+            width: 90%;
+            max-width: 650px;
+            text-align: center;
+        }
+
+        .icon-error {
+            font-size: 4em;
+            color: #ff5252;
+            margin-bottom: 20px;
+            animation: glitchIcon 2s infinite steps(2, end);
+        }
+
+        @keyframes glitchIcon {
+            0%, 100% { transform: translate(0, 0); opacity: 1; }
+            10% { transform: translate(-3px, 2px) skewX(-5deg); opacity: 0.8; }
+            20% { transform: translate(3px, -2px) skewX(5deg); opacity: 1; }
+            30% { transform: translate(-2px, -1px) skewX(-3deg); opacity: 0.9; }
+            40% { transform: translate(2px, 1px) skewX(3deg); opacity: 1; }
+            50% { transform: translate(0,0); opacity: 0.7;}
+            60% { transform: translate(-3px, 2px) skewX(-5deg); opacity: 1; }
+            70% { transform: translate(3px, -2px) skewX(5deg); opacity: 0.8; }
+            80% { transform: translate(-1px, -2px) skewX(-2deg); opacity: 1; }
+            90% { transform: translate(1px, 2px) skewX(2deg); opacity: 0.9; }
+        }
+
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #ff8a80;
+            text-shadow: 0 0 5px #ff5252, 0 0 8px #ff5252;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        p.message {
+            font-family: 'Special Elite', cursive;
+            font-size: 1.3em;
+            color: #ffcdd2;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .error-details {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9em;
+            color: #aaa;
+            background-color: rgba(0,0,0,0.2);
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px dashed #555;
+            margin-bottom: 30px;
+            text-align: left;
+            word-break: break-all;
+        }
+        .error-details strong {
+            color: #ff8a80;
+        }
+
+        .action-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #ffab40;
+            color: #1a1a2e;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+            margin-right: 10px;
+        }
+        .action-button:last-child {
+            margin-right: 0;
+        }
+
+        .action-button:hover {
+            background-color: #ffd180;
+            box-shadow: 0 0 10px rgba(255, 171, 64, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .error-container {
+                padding: 30px 25px;
+            }
+            .icon-error {
+                font-size: 3em;
+            }
+            h1 {
+                font-size: 1.6em;
+            }
+            p.message {
+                font-size: 1.1em;
+            }
+             .error-details {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <div class="icon-error">⚠️</div>
+        <h1>Temporal Anomaly Detected!</h1>
+        <p class="message">
+            It seems we've hit a snag in the spacetime continuum (or maybe just a server hiccup).
+            Our chronometer technicians are probably already aware and muttering about recalibration.
+        </p>
+
+        <div class="error-details">
+            <strong>Error Code:</strong> <span id="errorCode">T-NEXUS-ERR-{{ERROR_CODE_HERE}}</span><br>
+            <strong>Diagnostic Info:</strong> <span id="errorInfo">Unable to process request. Potential paradox detected or resource unavailable at this temporal coordinate.</span>
+        </div>
+
+        <a href="/" class="action-button">Return to Nexus Hub</a>
+        <a href="javascript:history.back()" class="action-button">Try Previous Jump</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.error-container');
+            container.style.opacity = 0;
+            container.style.transform = 'translateX(10px) rotate(1deg)';
+
+            setTimeout(() => {
+                container.style.transition = 'opacity 0.4s ease-out, transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                container.style.opacity = 1;
+                container.style.transform = 'translateX(0) rotate(0deg)';
+            }, 100);
+
+            const errorCodeElement = document.getElementById('errorCode');
+
+            if (errorCodeElement.textContent.includes('{{ERROR_CODE_HERE}}')) {
+                 errorCodeElement.textContent = 'T-NEXUS-ERR-' + Math.random().toString(16).substr(2, 8).toUpperCase();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+    <div class="container">
+        <h1>The Missing Letters</h1>
+        <p>Guess the letters in the flag! See if you can get them all.</p>
+
+        <form id="letterForm" action="/check">
+            <div class="form-group">
+                <label for="letterInput">Enter your guess:</label>
+                <input type="text" id="letterInput" name="f" required autocomplete="off">
+            </div>
+            <button type="submit" id="submitButton">Check Letter</button>
+        </form>
+
+        <div id="resultArea">
+            <p id="message"></p>
+            <div id="loadingIndicator" class="hidden">
+                Checking...
+            </div>
+        </div>
+    </div>

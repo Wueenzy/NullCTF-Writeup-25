@@ -1,0 +1,9 @@
+services:
+  abcdef:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: abcdef
+    ports:
+      - "1337:1337"
+    restart: unless-stopped

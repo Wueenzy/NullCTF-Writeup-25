@@ -1,0 +1,32 @@
+Discord
+Discord is a free social communication platform that allows users to communicate via text, voice, and video chat. Initially popular with gamers, it is now used by various communities to create and join servers, which are dedicated chat spaces organized into channels around specific interests. Discord is available on desktop, mobile, and web browsers.
+
+Key Features
+🗨️ Communication
+Send direct messages
+Voice and video calls
+Screen sharing
+🏰 Servers
+Users can create or join servers
+Servers host communities based on shared interests (e.g., gaming, music, book clubs)
+🔊 Channels
+Servers include multiple text and voice channels
+Channels often focus on specific topics
+🤖 Bots
+Servers can include bots (automated tools)
+Bots can assist with tasks such as:
+Moderation
+Playing games
+Creating AI-generated art
+💻 Availability
+Discord is available on:
+
+Windows
+macOS
+Linux
+Android
+iOS
+Web browser
+Note: Don't forget to add the { } and replace spaces with _ so it matches the format nullctf{smth_smth} Note 2: Flag is case insensitive
+
+Hint 1: We do not provide assistance over voice channels.

@@ -1,0 +1,83 @@
+{% extends "base" %}
+
+{% block styles %}
+<style>
+    button {
+        align-self: center;
+    }
+
+    #error {
+        width: 100%;
+        display: none;
+
+        & > div {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock styles %}
+
+{% block content %}
+<div class="tui-window">
+    <form id="form">
+        <fieldset class="tui-fieldset">
+            <legend class="white-255-text center">{{ title }}</legend>
+            <label>
+                <span>
+                    <span class="yellow-255-text">T</span>itle.....:
+                </span>
+                <input autocomplete="off" class="tui-input" name="title" style="width: 250px"/>
+            </label>
+            <label>
+                <span>
+                    <span class="yellow-255-text">C</span>ontent...:
+                </span>
+                <textarea autocomplete="off" class="tui-input" name="content" style="width: 250px"></textarea>
+            </label>
+            <label>
+                <span>
+                    <span class="yellow-255-text">M</span>eta......:
+                </span>
+                <textarea autocomplete="off" class="tui-input" name="meta" style="width: 250px"></textarea>
+            </label>
+            <div id="error">
+                <div class="tui-window red-168 left-align">
+                    <fieldset class="tui-fieldset">
+                        <legend class="red-255 yellow-255-text">Error</legend>
+                        <div id="error-message"></div>
+                    </fieldset>
+                </div>
+            </div>
+            <div>Write meta tags like `property1+content1|property2+content2`</div>
+            <button class="tui-button" type="submit">
+                <span class="yellow-255-text">S</span>ubmit
+            </button>
+        </fieldset>
+    </form>
+
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    document.getElementById("form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const jsonData = Object.fromEntries(formData.entries());
+        jsonData.meta = jsonData.meta.split("|").map((item) => item.split("+")).map(([property, content]) => ({
+            property,
+            content
+        }));
+        const response = await postRequest("/create", jsonData);
+        const json = await response.json();
+        if (!response.ok) {
+            document.getElementById("error-message").textContent = json.error;
+            document.getElementById("error").style.display = "block";
+            return;
+        }
+
+        location.href = `/${json.post.id}`;
+    });
+</script>
+{% endblock scripts %}

@@ -1,0 +1,3 @@
+“The Fremen speak of the great sandworms of Arrakis with reverence. They call them Shai-Hulud, the Old Man of the Desert, and see in them a manifestation of God.”
+
+Note: No attachments is intended. Note 2: The gcloud keys from the sample are not in the target. Please donnot tamper with any GCP instance. Note 3: Not any cloud. AWS, Azure, Alibaba, Vercel, etc.

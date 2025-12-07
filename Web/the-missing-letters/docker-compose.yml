@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    container_name: the-missing-letters
+    ports:
+      - "9091:9091"
+    restart: unless-stopped

@@ -1,0 +1,29 @@
+    <div class="container">
+        <h1>Result of Your Guess</h1>
+        <div id="resultDisplay">
+            <p>Loading message...</p>
+        </div>
+        <a href="/" class="back-link">Have Another Guess</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const resultDisplay = document.getElementById('resultDisplay');
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const message = urlParams.get('message');
+            const status = urlParams.get('status');
+
+            if (message) {
+                resultDisplay.textContent = decodeURIComponent(message);
+            } else {
+                resultDisplay.textContent = "No message received.";
+            }
+
+            if (status) {
+                resultDisplay.className = 'message-' + decodeURIComponent(status);
+            } else {
+                resultDisplay.className = 'message-info';
+            }
+        });
+    </script>

@@ -1,0 +1,14 @@
+name: the-missing-letters
+version: 1.0.0
+
+targets:
+  app:
+    main: app.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+  jwt:
+    github: crystal-community/jwt
+  crest:
+    github: mamantoha/crest

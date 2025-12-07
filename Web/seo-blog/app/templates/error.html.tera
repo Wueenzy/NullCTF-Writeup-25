@@ -1,0 +1,15 @@
+{% extends "base" %}
+
+{% block styles %}
+{% endblock styles %}
+
+{% block content %}
+<div class="tui-window">
+    <div class="tui-window red-168 left-align">
+        <fieldset class="tui-fieldset">
+            <legend class="red-255 yellow-255-text">Error</legend>
+            <div id="error-message">{{ error }}</div>
+        </fieldset>
+    </div>
+</div>
+{% endblock content %}

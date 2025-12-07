@@ -1,0 +1,32 @@
+{% extends "base" %}
+
+{% block styles %}
+<style>
+    button {
+        align-self: center;
+        width: 100%;
+    }
+</style>
+{% endblock styles %}
+
+{% block content %}
+<div class="tui-window">
+    <fieldset class="tui-fieldset">
+        <legend class="white-255-text center">{{ title }}</legend>
+        {% for post in posts %}
+        <div class="tui-window">
+            <fieldset class="tui-fieldset">
+                <legend class="white-255-text center">{{ post.title }}</legend>
+                <div>{{ post.content }}</div>
+                <button class="tui-button">
+                    <a href="/{{ post.id }}"><span class="yellow-255-text">V</span>iew</a>
+                </button>
+            </fieldset>
+        </div>
+        {% endfor %}
+        <button class="tui-button purple-168">
+            <a href="/create"><span class="yellow-255-text">C</span>reate Post</a>
+        </button>
+    </fieldset>
+</div>
+{% endblock content %}

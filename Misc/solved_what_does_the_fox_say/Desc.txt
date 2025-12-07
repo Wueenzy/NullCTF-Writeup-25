@@ -1,0 +1,5 @@
+The fox left behind a strange melody... Hidden in the noise lies the truth. Can you figure out what the fox says? 🦊
+
+Note: If you find strings that are not in the nullctf{} format, those are only parts. You need all of them combined to uravel the flag.
+
+http://public.ctf.r0devnull.team:3012

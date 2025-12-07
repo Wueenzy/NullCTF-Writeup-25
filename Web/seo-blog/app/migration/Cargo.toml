@@ -1,0 +1,20 @@
+[package]
+name = "migration"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "migration"
+path = "src/lib.rs"
+
+[dependencies]
+argon2 = { version = "0.5.3", features = ["std"] }
+async-std = { version = "1", features = ["attributes", "tokio1"] }
+rand_core = { version = "0.9.3", features = ["std"] }
+sea-orm = "1.1.12"
+uuid = { version = "1.17.0", features = ["v4"] }
+
+[dependencies.sea-orm-migration]
+version = "1.1.0"
+features = ["sqlx-sqlite", "runtime-tokio-rustls"]

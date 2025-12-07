@@ -1,0 +1,17 @@
+services:
+  ftp:
+    build:
+      context: ftp
+    ports:
+      - "2121:2121"
+      - "30000-30009:30000-30009"
+  backend:
+    build:
+      context: backend
+    ports:
+      - "8000:8000"
+  frontend:
+    build:
+      context: frontend
+    ports:
+      - "3000:3000"

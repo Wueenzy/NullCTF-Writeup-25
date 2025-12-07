@@ -1,0 +1,21 @@
+{% extends "auth" %}
+
+{% block scripts %}
+<script>
+    document.getElementById("form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const jsonData = Object.fromEntries(formData.entries());
+        const response = await postRequest("/auth/register", jsonData);
+        const json = await response.json();
+        if (!response.ok) {
+            document.getElementById("error-message").textContent = json.error;
+            document.getElementById("error").style.display = "block";
+            return;
+        }
+
+        location.href = "/auth/login";
+    });
+</script>
+{% endblock scripts %}

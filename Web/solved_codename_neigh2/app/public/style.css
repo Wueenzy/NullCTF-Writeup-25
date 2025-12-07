@@ -1,0 +1,28 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    color: #2a6690;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #2a6690;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e4966;
+}
+
+#apiResponse {
+    margin-top: 15px;
+    font-style: italic;
+}

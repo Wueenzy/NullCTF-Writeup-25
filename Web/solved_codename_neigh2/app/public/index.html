@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporal Nexus - Central Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a1a2e;
+            background-image: radial-gradient(circle, #2a2a4e 1px, transparent 1px),
+                              radial-gradient(circle, #2a2a4e 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #e0e0e0;
+        }
+
+        .hub-container {
+            background-color: rgba(12, 12, 22, 0.85);
+            padding: 25px 35px;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(70, 130, 180, 0.3),
+                        0 0 5px rgba(255, 255, 255, 0.2) inset;
+            border: 1px solid #4682b4;
+            width: 95%;
+            max-width: 800px;
+            margin-top: 30px;
+        }
+
+        header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.7em;
+            margin-bottom: 5px;
+            color: #64ffda;
+            text-align: center;
+            text-shadow: 0 0 5px #64ffda, 0 0 10px #64ffda;
+            letter-spacing: 1px;
+        }
+
+        header p.subtitle {
+            font-family: 'Special Elite', cursive;
+            font-size: 1.2em;
+            color: #b0c4de;
+            text-align: center;
+            margin-bottom: 35px;
+            border-bottom: 1px dashed #4682b4;
+            padding-bottom: 15px;
+        }
+
+        .nexus-section {
+            margin-bottom: 30px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 15px;
+            background-color: rgba(20, 20, 35, 0.7);
+        }
+
+        .nexus-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6em;
+            color: #ffab40;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #555;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nexus-section h2 .icon {
+            margin-right: 10px;
+            font-size: 1.2em;
+            color: #ffab40;
+        }
+
+        .nexus-links {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .nexus-links li {
+            margin-bottom: 18px;
+            padding: 12px;
+            background-color: rgba(30, 30, 50, 0.8);
+            border-left: 4px solid #64ffda;
+            border-radius: 4px;
+            transition: background-color 0.2s ease-out, transform 0.2s ease-out;
+        }
+
+        .nexus-links li:hover {
+            background-color: rgba(40, 40, 60, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .nexus-links a {
+            text-decoration: none;
+            color: #90caf9;
+            font-size: 1.3em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .nexus-links a:hover {
+            color: #e3f2fd;
+            text-decoration: underline;
+        }
+
+        .link-description {
+            font-size: 0.95em;
+            color: #cccccc;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        .file-id, .bulletin-id, .priority-tag {
+            display: inline-block;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8em;
+            color: #888;
+            background-color: #222;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-top: 8px;
+            border: 1px solid #444;
+        }
+        .priority-tag {
+            color: #ff5252;
+            border-color: #ff5252;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+            font-family: 'Special Elite', cursive;
+        }
+        footer a {
+            color: #64ffda;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2em;
+            }
+            .hub-container {
+                padding: 20px;
+                margin-top: 20px;
+            }
+            .nexus-section h2 {
+                font-size: 1.3em;
+            }
+            .nexus-links a {
+                font-size: 1.1em;
+            }
+             .nexus-links li {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hub-container">
+        <header>
+            <h1>Temporal Nexus</h1>
+            <p class="subtitle">Central Dispatch & Chrononautical Anomaly Registry</p>
+        </header>
+
+        <section class="nexus-section">
+            <h2><span class="icon">⚠️</span> Active Alerts & Bulletins</h2>
+            <ul class="nexus-links">
+                <li>
+                    <a href="/pony">MISSING: Biological Unit "Neigh" (Equine)</a>
+                    <p class="link-description">Temporal displacement suspected. Unit is small, brown, and answers to auditory stimuli "Neigh". High sentimental value. Last coordinates: Cretaceous Period, Sector G-8.</p>
+                    <span class="file-id">Case File: TDA-PONY-001</span>
+                    <span class="priority-tag">HIGH PRIORITY</span>
+                </li>
+                <li>
+                    <a href="#">SYSTEM ADVISORY: Chroniton Flux - Sector Epsilon-9</a>
+                    <p class="link-description">Elevated chroniton particle readings detected. All non-essential travel to this sector is discouraged. Potential for temporal paradoxes: Moderate to High.</p>
+                    <span class="bulletin-id">Advisory: #CZ-FLUX-791C</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="nexus-section">
+            <h2><span class="icon">📚</span> Resource Archives & Protocols</h2>
+            <ul class="nexus-links">
+                <li>
+                    <a href="#">Paradox Resolution Handbook (v14.2.1)</a>
+                    <p class="link-description">Comprehensive guide to identifying, mitigating, and (if absolutely necessary) instigating temporal paradoxes. Restricted access: Level 4 Clearance.</p>
+                    <span class="file-id">Document: PRH-14.2.1</span>
+                </li>
+                <li>
+                    <a href="#">Standard Temporal Jumpsuit Maintenance Guide</a>
+                    <p class="link-description">Includes instructions for recalibrating personal chronometers and removing dinosaur droppings.</p>
+                    <span class="file-id">Tech Manual: STJM-08B</span>
+                </li>
+                <li>
+                    <a href="#">Inter-Universal Bartering: Best Practices</a>
+                    <p class="link-description">Learn what items hold value across different timelines. (Spoiler: It's usually snacks or advanced weaponry).</p>
+                    <span class="file-id">Field Guide: IUB-BP-003</span>
+                </li>
+            </ul>
+        </section>
+
+         <section class="nexus-section">
+            <h2><span class="icon">🗺️</span> Navigational Data & Phenomena</h2>
+            <ul class="nexus-links">
+                <li>
+                    <a href="#">Known Stable Wormhole Coordinates</a>
+                    <p class="link-description">Verified list of stable trans-dimensional shortcuts. Use at your own risk. Pack a towel.</p>
+                    <span class="file-id">NavData: SWC-STABLE-042</span>
+                </li>
+                 <li>
+                    <a href="#">Blackett Time-Reversal Zones: Avoidance Map</a>
+                    <p class="link-description">Mapping of regions exhibiting localized reverse causality. Headaches and existential dread common side effects.</p>
+                    <span class="file-id">Hazard Map: BTRZ-AVD-011</span>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>Temporal Nexus Authority (TNA) | "We Sort of Keep an Eye on Time." | <a href="mailto:admin@temporalnexus.null">Report Anomaly</a></p>
+    </footer>
+</body>
+</html>

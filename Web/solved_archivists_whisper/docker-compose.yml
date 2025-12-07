@@ -1,0 +1,11 @@
+services:
+  main:
+    build: .
+    ports:
+      - 6806:6806
+    restart: unless-stopped
+    environment:
+      - TZ=America/New_York
+      - PUID=1000
+      - PGID=1000
+    container_name: archivists_whisper

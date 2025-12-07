@@ -1,0 +1,29 @@
+    <div class="submit-container">
+        <div class="submit-box">
+            <header class="submit-header">
+                <h1>Analyze Your Webpage</h1>
+                <p>Enter the URL of the webpage you want us to process.</p>
+            </header>
+
+            <form id="urlSubmitForm" action="/submit" method="POST">
+                <div class="form-group">
+                    <label for="urlInput">Webpage URL:</label>
+                    <input type="url" id="url" name="url"
+                           placeholder="e.g., https://www.example.com"
+                           required
+                           pattern="https?://.+">
+                    <br>
+                    <small class="form-text">Please enter a valid URL, starting with http:// or https://</small>
+                </div>
+
+                <button type="submit" id="submitUrlButton">
+                    <span class="button-text">Submit URL</span>
+                    <span class="button-loader hidden"></span>
+                </button>
+            </form>
+
+            <footer class="submit-footer">
+                <p>Need help? (Wouldn't recommend)<br><a href="#">Check our FAQ</a> or <a href="#">Contact Support</a>.</p>
+            </footer>
+        </div>
+    </div>

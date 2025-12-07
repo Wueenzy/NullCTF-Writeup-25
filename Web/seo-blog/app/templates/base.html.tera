@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>{{ title }}</title>
+    <link href="/static/tuicss/tuicss.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
+    {% block styles %}
+    {% endblock styles %}
+    {% block head %}
+    {% endblock head %}
+</head>
+<body>
+<script src="/static/tuicss/tuicss.js"></script>
+<script src="/static/dompurify/purify.min.js"></script>
+<script src="/static/js/constants.js"></script>
+<script src="/static/js/utils.js"></script>
+<div class="tui-screen-full bordered white-168 tui-bg-blue-black">
+    {% block content %}
+    {% endblock content %}
+</div>
+{% block scripts %}
+{% endblock scripts %}
+</body>
+</html>

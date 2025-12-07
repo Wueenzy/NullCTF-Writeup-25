@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REPORT TRANSMITTED - Temporal Nexus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a1a2e;
+            background-image: radial-gradient(circle, #2a2a4e 1px, transparent 1px),
+                              radial-gradient(circle, #2a2a4e 1px, transparent 1px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #e0e0e0;
+        }
+
+        .confirmation-container {
+            background-color: rgba(12, 12, 22, 0.85);
+            padding: 40px 50px;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgba(70, 130, 180, 0.3),
+                        0 0 5px rgba(255, 255, 255, 0.2) inset;
+            border: 1px solid #4682b4;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .icon-success {
+            font-size: 4em;
+            color: #64ffda;
+            margin-bottom: 20px;
+            animation: pulseIcon 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulseIcon {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2em;
+            margin-bottom: 15px;
+            color: #64ffda;
+            text-shadow: 0 0 5px #64ffda, 0 0 8px #64ffda;
+            letter-spacing: 1px;
+        }
+
+        p.message {
+            font-family: 'Special Elite', cursive;
+            font-size: 1.3em;
+            color: #b0c4de;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .reference-id {
+            display: block;
+            font-size: 0.9em;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        .reference-id strong {
+            color: #aaa;
+        }
+
+        .action-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #ffab40;
+            color: #1a1a2e;
+            border: none;
+            border-radius: 4px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease-out, box-shadow 0.2s ease-out;
+        }
+
+        .action-button:hover {
+            background-color: #ffd180;
+            box-shadow: 0 0 10px rgba(255, 171, 64, 0.5);
+        }
+
+        @media (max-width: 600px) {
+            .confirmation-container {
+                padding: 30px 25px;
+            }
+            .icon-success {
+                font-size: 3em;
+            }
+            h1 {
+                font-size: 1.7em;
+            }
+            p.message {
+                font-size: 1.1em;
+            }
+        }
+        
+        .template {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confirmation-container">
+        <div class="icon-success">✓</div>
+        <h1>Report Transmitted Successfully!</h1>
+        <p class="message">
+            Your sighting report has been logged with the Temporal Nexus.
+            The original traveler has been notified. Thanks for your keen eye and invaluable assistance across the timelines!
+            <br>
+            <div class="template">
+                Designation: {{reporterName}}
+                <br>
+                Location: {{sightingLocation}}
+                <br>
+                Contact: {{contactMethod}}
+                <br>
+                Message: {{message}}
+            </div>
+        </p>
+        <div class="reference-id">
+            Transmission Log ID: <strong>TNX-SIGHTING-{{UNIQUE_ID_HERE}}</strong>
+        </div>
+
+        <a href="index.html" class="action-button">Return to Nexus Hub</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.confirmation-container');
+            container.style.opacity = 0;
+            container.style.transform = 'scale(0.9)';
+
+            setTimeout(() => {
+                container.style.transition = 'opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                container.style.opacity = 1;
+                container.style.transform = 'scale(1)';
+            }, 100);
+
+            const referenceIdElement = document.querySelector('.reference-id strong');
+            if (referenceIdElement && referenceIdElement.textContent.includes('{{UNIQUE_ID_HERE}}')) {
+                const pseudoId = 'R' + Math.random().toString(36).substr(2, 9).toUpperCase();
+                referenceIdElement.textContent = pseudoId;
+            }
+        });
+    </script>
+</body>
+</html>

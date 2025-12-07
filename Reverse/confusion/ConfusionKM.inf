@@ -1,0 +1,62 @@
+;
+; ConfusionKM.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System ; TODO: specify appropriate Class
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider    = %ManufacturerName%
+CatalogFile = ConfusionKM.cat
+DriverVer = 12/02/2025,19.57.3.186
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+ConfusionKM.sys = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName% = Standard,NTamd64.10.0...16299 ; %13% support introduced in build 16299
+
+[Standard.NTamd64.10.0...16299]
+%ConfusionKM.DeviceDesc% = ConfusionKM_Device, Root\ConfusionKM ; TODO: edit hw-id
+
+[ConfusionKM_Device.NT]
+CopyFiles = File_Copy
+
+[File_Copy]
+ConfusionKM.sys
+
+;-------------- Service installation
+[ConfusionKM_Device.NT.Services]
+AddService = ConfusionKM,%SPSVCINST_ASSOCSERVICE%, ConfusionKM_Service_Inst
+
+; -------------- ConfusionKM driver install sections
+[ConfusionKM_Service_Inst]
+DisplayName    = %ConfusionKM.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\ConfusionKM.sys
+
+[ConfusionKM_Device.NT.Wdf]
+KmdfService = ConfusionKM, ConfusionKM_wdfsect
+
+[ConfusionKM_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+ManufacturerName = "<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "ConfusionKM Installation Disk"
+ConfusionKM.DeviceDesc = "ConfusionKM Device"
+ConfusionKM.SVCDESC = "ConfusionKM Service"

@@ -1,0 +1,88 @@
+{% extends "base" %}
+
+{% block head %}
+{% for tag in meta %}
+<meta
+        content="{{ tag.content | default(value = '') }}"
+        http-equiv="{{ tag.http_equiv | default(value = '') }}"
+        property="{{ tag.property | default(value = '') }}"
+>
+{% endfor %}
+{% endblock head %}
+
+{% block styles %}
+<style>
+    #status {
+        width: 100%;
+        display: none;
+
+        & > div {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock styles %}
+
+{% block content %}
+<div data-content="{{ post.content }}" data-id="{{ post.id }}" id="data"></div>
+<div class="tui-window">
+    <fieldset class="tui-fieldset">
+        <legend class="white-255-text center">{{ post.title }}</legend>
+        <div id="content"></div>
+        <button class="tui-button red-168" onclick="report()">
+            <span class="yellow-255-text">R</span>eport
+        </button>
+        <div id="status" class="tui-window left-align">
+            <fieldset class="tui-fieldset">
+                <legend class="yellow-255-text"></legend>
+                <div id="status-message"></div>
+            </fieldset>
+        </div>
+    </fieldset>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script>
+    const data = document.getElementById("data").dataset;
+    const token = localStorage.getItem("token");
+
+    document.getElementById("content").innerHTML = DOMPurify.sanitize(data.content, {
+        ALLOWED_TAGS: ["b", "i", "a"],
+    });
+
+    async function report() {
+        const button = document.querySelector("button");
+        button.disabled = true;
+        button.innerText = "Reporting...";
+        const response = await fetch(`${CONSTANTS.href}/report/${data.id}`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        button.disabled = false;
+        button.innerText = "Report";
+        const status = document.getElementById("status");
+        status.style.display = "block";
+        status.classList.add(response.ok ? "green-168" : "red-168");
+        const legend = status.getElementsByTagName("legend")[0];
+        legend.classList.add(response.ok ? "green-255" : "red-255");
+        legend.innerText = response.ok ? "Success" : "Error";
+        document.getElementById("status-message").innerText =
+            response.ok
+                ? "Reported"
+                : (await response.json()).error;
+    }
+</script>
+{% if is_admin %}
+<script>
+    fetch(`${CONSTANTS.href}/verify/${data.id}`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+</script>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,8 @@
+name: seo-blog
+
+services:
+  seo-blog:
+    build:
+      context: app
+    ports:
+      - "8000:8000"

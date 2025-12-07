@@ -1,0 +1,5 @@
+You got access to our secure server. We made sure the root user is extra secure, though.
+
+Credentials: stefan:b2hRJVkVr2
+
+INSTANCE

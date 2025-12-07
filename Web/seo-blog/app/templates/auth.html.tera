@@ -1,0 +1,50 @@
+{% extends "base" %}
+
+{% block styles %}
+<style>
+    button {
+        align-self: center;
+    }
+
+    #error {
+        width: 100%;
+        display: none;
+
+        & > div {
+            width: 100%;
+        }
+    }
+</style>
+{% endblock styles %}
+
+{% block content %}
+<div class="tui-window">
+    <form id="form">
+        <fieldset class="tui-fieldset">
+            <legend class="white-255-text center">{{ title }}</legend>
+            <label>
+                <span>
+                    <span class="yellow-255-text">U</span>sername...:
+                </span>
+                <input autocomplete="off" class="tui-input" name="username" style="width: 250px"/>
+            </label>
+            <label>
+                <span>
+                    <span class="yellow-255-text">P</span>assword...:
+                </span>
+                <input autocomplete="off" class="tui-input" name="password" style="width: 250px" type="password"/>
+            </label>
+            <div id="error" class="tui-window red-168 left-align">
+                <fieldset class="tui-fieldset">
+                    <legend class="red-255 yellow-255-text">Error</legend>
+                    <div id="error-message"></div>
+                </fieldset>
+            </div>
+            <button class="tui-button" type="submit">
+                <span class="yellow-255-text">S</span>ubmit
+            </button>
+        </fieldset>
+    </form>
+
+</div>
+{% endblock content %}
